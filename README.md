@@ -20,7 +20,9 @@ Google it
 -d runs the image in detached head mode, so it will continue running when you exit the terminal window.
 
 4. Push the Docker image to Docker Hub.
-```docker push kapolyak/dockerdemo```
+```
+docker push kapolyak/dockerdemo
+```
 
 We are pushing the image to dockerhub, not the container. However, we must build a container before pushing the image. 
 
