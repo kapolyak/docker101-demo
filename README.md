@@ -11,8 +11,8 @@ A simple repo to demonstrate the building-blocks of Docker.
 docker build -t kapolyak/dockerdemo .
 ```
 
-	-t sets the image tag. Remember to precede the tag with your docker username. 
-	. this period is not a typo! It tells docker to include everything in this directory in the image. 
+&nbsp;-t sets the image tag. Remember to precede the tag with your docker username. 
+. this period is not a typo! It tells docker to include everything in this directory in the image. 
 
 3. Run the Docker image
 ```
