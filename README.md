@@ -2,16 +2,16 @@
 
 A simple repo to demonstrate the building-blocks of Docker.
 
-### Demo steps:
+## Demo steps:
 
-1. Install Docker. Start Docker. Create a Dockerfile and .dockerignore file in your root directory. CD into that directory. Refer to the [Docker official docs](https://docs.docker.com/get-started/) to get started.
+##### 1. Install Docker. Start Docker. Create a Dockerfile and .dockerignore file in your root directory. CD into that directory. Refer to the [Docker official docs](https://docs.docker.com/get-started/) to get started.
 
-2. Build a Docker image
+##### 2. Build a Docker image
 ```
 docker build -t kapolyak/dockerdemo .
 ```
 
-&nbsp;-t sets the image tag. Remember to precede the tag with your docker username. 
+-t sets the image tag. Remember to precede the tag with your docker username. 
 . this period is not a typo! It tells docker to include everything in this directory in the image. 
 
 3. Run the Docker image
