@@ -4,8 +4,7 @@ A simple repo to demonstrate the building-blocks of Docker.
 
 ### Demo steps:
 
-1. Start docker. Create a Dockerfile and .dockerignore file in your root directory. CD into that directory.
-Google it
+1. Install Docker. Start Docker. Create a Dockerfile and .dockerignore file in your root directory. CD into that directory. Refer to the official docs to get started: https://docs.docker.com/get-started/
 
 2. Build a Docker image
 ```
