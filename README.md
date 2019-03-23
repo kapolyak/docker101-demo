@@ -1,6 +1,6 @@
 # Docker 101 - Demo
 
-A simple repo to demonstrate the building-blocks of Docker.
+A simple educational repo to demonstrate the building-blocks of Docker.
 
 ## Demo steps:
 
