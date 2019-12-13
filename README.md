@@ -85,13 +85,18 @@ Pro-tip: you only need to type the first three characters of a container ID to r
 
 You should see `app listening on port 3030`. 
 
-##### 6. Push the Docker image to Docker Hub.
+##### 6. Stop the container.
+```
+docker stop [container id]
+```
+
+##### 7. Push the Docker image to Docker Hub.
 We are pushing the image to Docker Hub, not the container.
 ```
 docker push kapolyak/dockerdemo
 ```
 
-##### 7. Pull the Docker image to the host machine.
+##### 8. Pull the Docker image to the host machine.
 Once on Docker Hub, you can pull this image down onto any host machine (that has Docker installed). 
 ```
 docker pull kapolyak/dockerdemo
