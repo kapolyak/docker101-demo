@@ -1,6 +1,6 @@
 # Docker 101 - Demo
 
-A simple educational tutorial to demonstrate the building-blocks of Docker. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to run the app locally). You'll go through the steps of building a Docker image for this app, pushing this image to Docker Hub, pulling the image down from Docker Hub, and finally running the container to run the app with Docker. 
+A simple educational tutorial to demonstrate the building-blocks of Docker. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to run the app locally). You'll go through the steps of building a Docker image for this app, running the container to run the app with Docker, pushing this image to Docker Hub, and pulling the image down from Docker Hub.
 
 ## Demo steps:
 
