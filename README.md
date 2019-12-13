@@ -1,12 +1,12 @@
 # Docker 101 - Demo
 
-A simple educational tutorial to demonstrate the building-blocks Docker. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to try running the app locally). You'll go through the steps of building a Docker image for this app, pushing this image to Docker Hub, pulling the image down from Docker Hub, and finally running the container to run the app. 
+A simple educational tutorial to demonstrate the building-blocks of Docker. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to run the app locally). You'll go through the steps of building a Docker image for this app, pushing this image to Docker Hub, pulling the image down from Docker Hub, and finally running the container to run the app with Docker. 
 
 ## Demo steps:
 
 ##### 0. Install Docker. Start Docker. Create a Docker Hub account. Login on the Docker client running on your local machine. Clone this repo. Navigate to the root directory of this app on your local machine. Take a quick look at the Dockerfile and .dockerignore file. 
 
-A `Dockerfile` is just instructions for Docker on how to spin up your application inside a Docker container. If you look closely below, at some point Docker will run `npm install` and `npm start`. These are commands you would normally run manually if you wanted to run this Node app locally. `.dockerignore` is like `.gitignore`, which tells Docker what directories to not include in the image. Refer to the [Docker official docs](https://docs.docker.com/get-started/) for way more information. 
+A `Dockerfile` is just instructions for Docker on how to spin up your application inside a Docker container. If you look closely below, at some point Docker will run `npm install` and `npm start`. These are commands you would normally run manually if you wanted to run this Node app locally. `FROM node:8` is telling Docker it needs to pull down an image of Node 8 (which you can find on Docker Hub) in order to run this app. There are a bunch of other commands you can put in a Dockerfile.  `.dockerignore` is like `.gitignore`, which tells Docker what directories to not include in the image. Refer to the [Docker official docs](https://docs.docker.com/get-started/) for way more information. 
 
 ##### Dockerfile
 
@@ -40,62 +40,62 @@ Npm-debug.log
 ```
 
 ##### 1. Build a Docker image
-We are going to first build a Docker image for this app. A Docker image is sort of like a "class", and a Docker container is sort of like an instance of that class. Make sure you are CD'ed into the root directory of the app and run: 
+We are going to first build a Docker image for this app. A Docker image works sort of like a "class" in object-oriented programming, whereas a Docker container is sort of like an instance of that "class". CD into the root directory of the app and run: 
 ```
 docker build -t [your Docker Hub username]/dockerdemo .
 ```
 
--t sets the image tag. Remember to precede the tag with your Docker Hub username. 
-. this period is not a typo! It tells docker to include everything in this directory in the image. 
+`-t` sets the image tag. Remember to precede the tag with your Docker Hub username. 
+`.` this period is not a typo! It tells docker to include everything in this directory in the image. 
 
-##### 2. Run the Docker image
-Once you have a Docker image built, you can run the Docker container, (though really, we run the "image"). 
-```
-docker run -p 80:3030 -d kapolyak/dockerdemo
-```
+You'll now watch Docker pull down any dependencies (eg. Node 8) and run any commands you indicated in your Dockerfile. 
 
--p sets the relationship between a port on the host machine (where docker is installed) and a port on the docker container. 
-The port mapping here is important to understand. Docker is a runtime that is running on a host machine - its basically another host running in your computer. 
-The number to the left of the colon is the port you want Docker to listen to. The number to the right is the port in Docker that your app is listening to. 
--d runs the image in detached head mode, so it will continue running when you exit the terminal window.
+##### 2. Show all Docker images
 
-##### 3. Push the Docker image to Docker Hub.
-We are pushing the image to dockerhub, not the container. However, we must build a container before pushing the image.
-```
-docker push kapolyak/dockerdemo
-```
-
-##### 4. Pull the Docker image to the host machine.
-```
-docker pull kapolyak/dockerdemo
-```
-
-##### 5. View all Docker images 
+Your local Docker should now have this image in it's "library". You can see all the images that are currently in your local Docker by running:
 ```
 docker images
 ```
 
-##### 6. Run a Docker image (create a container)
+##### 3. Run the Docker image
+Once you have a Docker image, you can "run" it to create a Docker container.
 ```
 docker run -p 80:3030 -d kapolyak/dockerdemo
 ```
 
-##### 7. Show running Docker containers
+`-p` sets the relationship between a port on the host machine (where Docker is installed) and a port on the docker container. 
+The port mapping here is important to understand. Docker is a runtime that is running on a host machine - its basically another host running in your computer. The number to the left of the colon is the port on your local machine that you want Docker to listen to. In this case, Docker is listening directly to https requests that come to your local machine. The number to the right is the port in Docker that your app is listening to. You can see in the node app that all it knows is to handle requests coming into port 3030 on whatever host it is on. The Node app doesn't know that it is inside a Docker container!
+`-d` runs the image in detached head mode, so it will continue running when you exit the terminal window.
+
+In a Browser, navigate to `localhost` and you should be hitting the Node app! We know it's inside Docker because you don't need to specify a port (80 is default here). If you run this app locally, you'll have to navigate to `localhost:3030`
+
+##### 4. Show running Docker containers
+Run this command to confirm the container is running.
 ```
 docker ps
 ```
 
-##### 8. Show logs generated by code running in a container
+##### 5. Show logs generated by code running in a container
+You can access the "console" for this app inside Docker too.  
 ```
 docker logs [container id]
 ```
 
 Pro-tip: you only need to type the first three characters of a container ID to reference that container. 
 
-## Other important things:
+You should see `app listening on port 3030`. 
 
-Below are examples of important files to include within the root directory of the repo you plan to Dockerize:
+##### 6. Push the Docker image to Docker Hub.
+We are pushing the image to Docker Hub, not the container.
+```
+docker push kapolyak/dockerdemo
+```
 
+##### 7. Pull the Docker image to the host machine.
+Once on Docker Hub, you can pull this image down onto any host machine (that has Docker installed). 
+```
+docker pull kapolyak/dockerdemo
+```
 
 ### Important Docker commands:
 
