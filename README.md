@@ -1,12 +1,12 @@
 # Docker 101 - Demo
 
-A simple educational tutorial to demonstrate the building-blocks of Docker. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to run the app locally). You'll go through the steps of building a Docker image for this app, running the container to run the app with Docker, pushing this image to Docker Hub, and pulling the image down from Docker Hub.
+A simple educational tutorial to get you to spin up your first Docker container. This repo includes a "hello world" node app that you should clone down (you don't need node.js on your local machine if you don't want to run the app locally). You'll go through the steps of building a Docker image for this app and running the container to run the app with Docker. Optionally, you can also push this image to Docker Hub and pull it down on another machine to get a feel for the "magic" of Docker. 
 
 ## Demo steps:
 
 ##### 0. Install Docker. Start Docker. Create a Docker Hub account. Login on the Docker client running on your local machine. Clone this repo. Navigate to the root directory of this app on your local machine. Take a quick look at the Dockerfile and .dockerignore file. 
 
-A `Dockerfile` is just instructions for Docker on how to spin up your application inside a Docker container. If you look closely below, at some point Docker will run `npm install` and `npm start`. These are commands you would normally run manually if you wanted to run this Node app locally. `FROM node:8` is telling Docker it needs to pull down an image of Node 8 (which you can find on Docker Hub) in order to run this app. There are a bunch of other commands you can put in a Dockerfile.  `.dockerignore` is like `.gitignore`, which tells Docker what directories to not include in the image. Refer to the [Docker official docs](https://docs.docker.com/get-started/) for way more information. 
+A `Dockerfile` is just instructions for Docker on how to spin up your application inside a Docker container. If you look closely below, at some point Docker will run `npm install` and `npm start`. These are commands you would normally run manually if you wanted to run this Node app locally. `FROM node:8` is telling Docker it needs to pull down an image of Node 8 (which you can find on Docker Hub) in order to run this app. There are a bunch of other commands you can put in a Dockerfile, which we won't go over. `.dockerignore` is like `.gitignore`, which tells Docker what directories to not include in the image. Refer to the [Docker official docs](https://docs.docker.com/get-started/) for way more information. 
 
 ##### Dockerfile
 
@@ -97,7 +97,7 @@ docker push kapolyak/dockerdemo
 ```
 
 ##### 8. Pull the Docker image to the host machine.
-Once on Docker Hub, you can pull this image down onto any host machine (that has Docker installed). 
+Once on Docker Hub, you can pull this image down onto any host machine (that has Docker installed). You can also go to your Docker Hub account and see the image there. 
 ```
 docker pull kapolyak/dockerdemo
 ```
