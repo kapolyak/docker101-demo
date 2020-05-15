@@ -64,7 +64,7 @@ docker run -p 80:3030 -d kapolyak/dockerdemo
 ```
 
 `-p` sets the relationship between a port in the host machine (where Docker is installed) and a port in Docker. 
-The port mapping here is important to understand. Docker is a runtime that is running on a host machine - its basically another host running in your computer. The number to the left of the colon is the port on your local machine that you want Docker to listen to. In this case, Docker is listening directly to https requests that come to your local machine. The number to the right is the port in Docker that your app is listening to. You can see in the node app that all this server knows is to handle requests coming in on port 3030, regardless of the host it is running on. The Node app doesn't need to know that it is inside a Docker container!
+The port mapping here is important to understand. Docker is a runtime that is running on a host machine - its basically another host running in your computer. The number to the left of the colon is the port on your local machine that you want Docker to listen to. In this case, Docker is listening directly to http requests that come to your local machine. The number to the right is the port in Docker that your app is listening to. You can see in the node app that all this server knows is to handle requests coming in on port 3030, regardless of the host it is running on. The Node app doesn't need to know that it is inside a Docker container!
 `-d` runs the image in detached head mode, so it will continue running when you exit the terminal window.
 
 ##### 4. Show running Docker containers
